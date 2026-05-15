@@ -41,9 +41,10 @@
   background: #a8a8a8;
 }
 
-/* Smooth scrolling */
+/* Smooth scrolling + compact typographic scale site-wide (Tailwind rem utilities follow html font-size) */
 html {
   scroll-behavior: smooth;
+  font-size: 85%; /* ~13.6px root vs default 16px — smaller body + headings across pages */
 }
 
 body {

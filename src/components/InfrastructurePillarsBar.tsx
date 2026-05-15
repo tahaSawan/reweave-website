@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import type { ReactNode } from 'react';
+import { home } from '@/lib/homePageStyle';
 
 function SystemIcon() {
   return (
@@ -87,7 +88,7 @@ function PillarItem({
       }`}
     >
       <div className="mb-4 flex h-12 items-center justify-center">{icon}</div>
-      <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white sm:text-xs">
+      <p className={`text-center ${home.pillarBarLabel}`}>
         {label}
       </p>
     </div>
@@ -96,36 +97,7 @@ function PillarItem({
 
 export default function InfrastructurePillarsBar() {
   return (
-    <section className="relative overflow-hidden bg-[#141210]">
-      {/* Network constellation overlay */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-40"
-        aria-hidden
-        style={{
-          backgroundImage: `
-            radial-gradient(circle at 20% 30%, rgba(200, 168, 130, 0.15) 0%, transparent 45%),
-            radial-gradient(circle at 80% 70%, rgba(200, 168, 130, 0.1) 0%, transparent 40%)
-          `,
-        }}
-      />
-      <svg
-        className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.12]"
-        aria-hidden
-      >
-        <defs>
-          <pattern id="pillar-grid" width="48" height="48" patternUnits="userSpaceOnUse">
-            <circle cx="24" cy="24" r="1" fill="#C8A882" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#pillar-grid)" />
-      </svg>
-
-      {/* Left-edge textile texture fade */}
-      <div
-        className="pointer-events-none absolute bottom-0 left-0 top-0 w-1/3 max-w-md bg-gradient-to-r from-[#2a2218]/60 to-transparent"
-        aria-hidden
-      />
-
+    <section className="border-b border-[#C8A882]/22 bg-[#1a1715]">
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex flex-col sm:flex-row sm:items-stretch">
           {pillars.map((pillar, index) => (

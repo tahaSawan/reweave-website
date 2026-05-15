@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { home } from '@/lib/homePageStyle';
 
 const heroFeatureBoxes = [
   {
@@ -11,9 +12,9 @@ const heroFeatureBoxes = [
       <Image
         src="/hero-box-1.png"
         alt=""
-        width={36}
-        height={36}
-        className="h-9 w-9 object-contain"
+        width={32}
+        height={32}
+        className="h-8 w-8 object-contain"
       />
     ),
   },
@@ -22,7 +23,7 @@ const heroFeatureBoxes = [
     description: 'Adaptive fibres, sensing systems and regenerative outputs.',
     iconRing: true,
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="h-[18px] w-[18px]" aria-hidden>
+      <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" aria-hidden>
         <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" />
         <path d="M8 4v16M16 4v16" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" />
       </svg>
@@ -33,7 +34,7 @@ const heroFeatureBoxes = [
     description: 'Closed-loop infrastructure designed for resilient environments.',
     iconRing: true,
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="h-[18px] w-[18px]" aria-hidden>
+      <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" aria-hidden>
         <circle cx="12" cy="12" r="3.25" stroke="currentColor" strokeWidth="1.35" />
         <ellipse cx="12" cy="12" rx="9" ry="3.25" stroke="currentColor" strokeWidth="1.15" />
         <ellipse cx="12" cy="12" rx="3.25" ry="9" stroke="currentColor" strokeWidth="1.15" />
@@ -64,17 +65,17 @@ function HeroFeatureBox({
       <div
         className={
           iconRing
-            ? 'flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#C8A882]/90 text-[#C8A882]'
-            : 'flex h-9 w-9 shrink-0 items-center justify-center'
+            ? 'flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#C8A882]/90 text-[#C8A882]'
+            : 'flex h-8 w-8 shrink-0 items-center justify-center'
         }
       >
         {icon}
       </div>
       <div className="min-w-0 text-left">
-        <h3 className="text-[11px] font-bold uppercase leading-tight tracking-[0.08em] text-white sm:text-xs md:text-[13px]">
+        <h3 className={home.heroFeatureTitle}>
           {title}
         </h3>
-        <p className="mt-1 text-[10px] font-normal leading-snug text-white/65 sm:text-[11px]">
+        <p className={home.heroFeatureDesc}>
           {description}
         </p>
       </div>
@@ -98,38 +99,33 @@ export default function HeroSection() {
 
       <div className="relative z-10 flex flex-1 flex-col justify-between pt-28 pb-10 sm:pt-32 lg:pb-12">
         <div className="mx-auto flex w-full max-w-4xl flex-1 flex-col justify-center px-6 text-center sm:px-8 lg:max-w-5xl">
-          <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.28em] text-[#C8A882] sm:text-xs">
-            RE:WEAVE™
+          <p className={`mb-3 sm:mb-4 ${home.heroEyebrow}`}>
+            Welcome to RE:WEAVE
           </p>
 
-          <h1 className="text-balance text-3xl font-light leading-[1.12] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.25rem]">
+          <h1 className={`${home.heroTitle}`}>
             One architecture. Many worlds.
             <br />
             <span className="mt-1 inline-block">
               The infrastructure of the{' '}
-              <span className="font-normal text-[#C8A882]">future</span>
+              <span className={`font-semibold ${home.accentGold}`}>future</span>
             </span>
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-base font-light leading-relaxed text-white/90 sm:text-lg md:max-w-3xl">
+          <p className={`mx-auto mt-4 max-w-xl md:max-w-2xl ${home.heroLead}`}>
             Transforming textiles into a resilient, closed-loop infrastructure for Earth and Space.
           </p>
 
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/60 sm:text-[15px]">
-            The first autonomous infrastructure platform for Earth and space — achieving technological
-            sovereignty through closed-loop systems.
-          </p>
-
-          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:mt-9 sm:flex-row sm:gap-4">
             <Link
               href="/system"
-              className="min-w-[220px] rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-[#1a1a1a] shadow-[0_8px_32px_rgba(0,0,0,0.35)] transition-all duration-300 hover:bg-[#C8A882] hover:text-white"
+              className="min-w-[200px] rounded-full bg-white px-7 py-3 text-sm font-semibold text-[#1a1a1a] shadow-[0_8px_32px_rgba(0,0,0,0.35)] transition-all duration-300 hover:bg-[#C8A882] hover:text-white"
             >
               Explore the Infrastructure
             </Link>
             <Link
               href="/contact"
-              className="min-w-[220px] rounded-full border border-white/50 bg-white/5 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-white hover:bg-white/15"
+              className="min-w-[200px] rounded-full border border-white/50 bg-white/5 px-7 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-white hover:bg-white/15"
             >
               Book a Call with Our Team
             </Link>

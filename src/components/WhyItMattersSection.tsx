@@ -1,3 +1,5 @@
+import { home } from '@/lib/homePageStyle';
+
 const flowSteps = ['Extract', 'Produce', 'Use', 'Discard'] as const;
 
 const regulations = [
@@ -21,18 +23,16 @@ const regulations = [
 
 export default function WhyItMattersSection() {
   return (
-    <section className="border-t border-[#ebe6dc] bg-white py-12 sm:py-16">
-      <div className="mx-auto max-w-3xl px-6 sm:px-8">
-        <h2 className="text-center text-3xl font-bold tracking-tight text-[#2c2c2c] sm:text-4xl">
-          Why It Matters
-        </h2>
+    <section className={`border-t border-[#ebe6dc] bg-white ${home.section}`}>
+      <div className={home.containerNarrow}>
+        <h2 className={`text-center ${home.h2}`}>Why It Matters</h2>
 
-        <p className="mt-10 text-center text-sm text-[#4a443c] sm:text-base">
+        <p className={`mt-8 text-center ${home.lead}`}>
           Today&apos;s material systems are still linear:
         </p>
 
         <div className="mt-4 overflow-hidden rounded-full bg-[#2c2c2c] px-4 py-3.5 shadow-sm sm:px-6 sm:py-4">
-          <div className="flex flex-wrap items-center justify-center gap-x-1 gap-y-2 text-xs font-medium text-white sm:text-sm">
+          <div className="flex flex-wrap items-center justify-center gap-x-1 gap-y-2 text-sm font-medium text-white sm:text-base">
             {flowSteps.map((step, index) => (
               <span key={step} className="flex items-center">
                 <span>{step}</span>
@@ -46,13 +46,13 @@ export default function WhyItMattersSection() {
           </div>
         </div>
 
-        <p className="mt-8 text-center text-sm leading-relaxed text-[#4a443c] sm:text-[0.9375rem] sm:leading-[1.75]">
+        <p className={`mt-8 text-center ${home.body}`}>
           Less than 1% of textiles are recycled into new materials, while industries face growing
           requirements for circularity, traceability, and accountability (Niinimäki et al., 2020;
           Ellen MacArthur Foundation, 2017).
         </p>
 
-        <p className="mt-10 text-center text-sm text-[#4a443c] sm:text-base">
+        <p className={`mt-10 text-center ${home.lead}`}>
           At the same time, regulation is shifting rapidly:
         </p>
 
@@ -60,7 +60,7 @@ export default function WhyItMattersSection() {
           {regulations.map((item) => (
             <div
               key={item.text}
-              className={`rounded-full px-5 py-3.5 text-center text-xs font-medium leading-snug sm:px-6 sm:py-4 sm:text-sm ${
+              className={`rounded-full px-5 py-3.5 text-center text-sm font-medium leading-snug sm:px-6 sm:py-4 sm:text-base ${
                 item.variant === 'dark'
                   ? 'bg-[#2c2c2c] text-white'
                   : 'bg-[#ebe6dc] text-[#2c2c2c]'
@@ -71,7 +71,7 @@ export default function WhyItMattersSection() {
           ))}
         </div>
 
-        <p className="mt-10 text-center text-sm text-[#6b6358] sm:text-base">
+        <p className={`mt-10 text-center ${home.bodyMuted}`}>
           Circularity is no longer optional, it is becoming infrastructure.
         </p>
       </div>
