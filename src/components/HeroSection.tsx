@@ -1,69 +1,157 @@
+import type { ReactNode } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+
+const heroFeatureBoxes = [
+  {
+    title: 'Autonomous Recovery',
+    description: 'AI-driven textile reclamation and circular material processing.',
+    iconRing: false,
+    icon: (
+      <Image
+        src="/hero-box-1.png"
+        alt=""
+        width={36}
+        height={36}
+        className="h-9 w-9 object-contain"
+      />
+    ),
+  },
+  {
+    title: 'Material Intelligence',
+    description: 'Adaptive fibres, sensing systems and regenerative outputs.',
+    iconRing: true,
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="h-[18px] w-[18px]" aria-hidden>
+        <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" />
+        <path d="M8 4v16M16 4v16" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Earth ↔ Space Systems',
+    description: 'Closed-loop infrastructure designed for resilient environments.',
+    iconRing: true,
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="h-[18px] w-[18px]" aria-hidden>
+        <circle cx="12" cy="12" r="3.25" stroke="currentColor" strokeWidth="1.35" />
+        <ellipse cx="12" cy="12" rx="9" ry="3.25" stroke="currentColor" strokeWidth="1.15" />
+        <ellipse cx="12" cy="12" rx="3.25" ry="9" stroke="currentColor" strokeWidth="1.15" />
+      </svg>
+    ),
+  },
+] as const;
+
+function HeroFeatureBox({
+  title,
+  description,
+  icon,
+  iconRing,
+  showDivider,
+}: {
+  title: string;
+  description: string;
+  icon: ReactNode;
+  iconRing?: boolean;
+  showDivider?: boolean;
+}) {
+  return (
+    <div
+      className={`flex items-center gap-3 px-4 py-3.5 sm:px-5 sm:py-4 ${
+        showDivider ? 'border-t border-white/12 lg:border-t-0 lg:border-l' : ''
+      }`}
+    >
+      <div
+        className={
+          iconRing
+            ? 'flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#C8A882]/90 text-[#C8A882]'
+            : 'flex h-9 w-9 shrink-0 items-center justify-center'
+        }
+      >
+        {icon}
+      </div>
+      <div className="min-w-0 text-left">
+        <h3 className="text-[11px] font-bold uppercase leading-tight tracking-[0.08em] text-white sm:text-xs md:text-[13px]">
+          {title}
+        </h3>
+        <p className="mt-1 text-[10px] font-normal leading-snug text-white/65 sm:text-[11px]">
+          {description}
+        </p>
+      </div>
+    </div>
+  );
+}
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen bg-gradient-to-b from-[#2c2c2c] via-[#3a3a3a] to-[#2c2c2c] overflow-hidden">
-      {/* Background Image Placeholder - Space for cosmic background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#2c2c2c]/80 via-transparent to-[#2c2c2c]/80"></div>
-      
-      {/* Placeholder for planets/space elements - using theme colors */}
-      <div className="absolute top-20 left-10 w-24 h-24 bg-gradient-to-br from-[#d4c7b8]/30 to-[#b8a491]/30 rounded-full blur-sm opacity-60"></div>
-      <div className="absolute top-32 right-20 w-16 h-16 bg-gradient-to-br from-[#C8A882]/40 to-[#b8a491]/40 rounded-full blur-sm opacity-50"></div>
-      <div className="absolute bottom-40 right-32 w-32 h-32 bg-gradient-to-br from-[#d4c7b8]/20 to-[#C8A882]/20 rounded-full blur-md opacity-70"></div>
-      
-      {/* Additional cosmic elements with theme colors */}
-      <div className="absolute top-1/3 left-1/4 w-20 h-20 bg-gradient-to-br from-[#f8f6f3]/20 to-[#d4c7b8]/20 rounded-full blur-lg opacity-40"></div>
-      <div className="absolute bottom-1/3 right-1/4 w-28 h-28 bg-gradient-to-br from-[#b8a491]/25 to-[#8B7355]/25 rounded-full blur-xl opacity-50"></div>
-      
-      {/* Placeholder for city skyline - using theme colors */}
-      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#2c2c2c]/90 via-[#2c2c2c]/50 to-transparent"></div>
-      <div className="absolute bottom-0 left-0 right-0 h-24">
-        <div className="flex justify-center items-end h-full space-x-2 opacity-30">
-          <div className="bg-[#d4c7b8] w-4 h-16"></div>
-          <div className="bg-[#C8A882] w-3 h-20"></div>
-          <div className="bg-[#b8a491] w-5 h-12"></div>
-          <div className="bg-[#d4c7b8] w-4 h-24"></div>
-          <div className="bg-[#C8A882] w-6 h-18"></div>
-          <div className="bg-[#b8a491] w-3 h-14"></div>
-          <div className="bg-[#d4c7b8] w-4 h-22"></div>
-        </div>
-      </div>
+    <section className="relative flex min-h-screen flex-col overflow-hidden">
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: 'url(/homepage-hero.png)' }}
+        aria-hidden
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-black/80" aria-hidden />
+      <div
+        className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,transparent_0%,rgba(0,0,0,0.55)_100%)]"
+        aria-hidden
+      />
 
-      {/* Content */}
-      <div className="relative z-10 flex items-center justify-center min-h-screen pt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-          <p className="text-[#C8A882] text-sm tracking-[0.2em] font-light mb-8 uppercase">
-            Welcome to Transforming Textiles
+      <div className="relative z-10 flex flex-1 flex-col justify-between pt-28 pb-10 sm:pt-32 lg:pb-12">
+        <div className="mx-auto flex w-full max-w-4xl flex-1 flex-col justify-center px-6 text-center sm:px-8 lg:max-w-5xl">
+          <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.28em] text-[#C8A882] sm:text-xs">
+            RE:WEAVE™
           </p>
-          
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-light text-white mb-8 leading-tight tracking-wide">
-            Textiles. Reimagined as<br/>
-            <span className="text-[#C8A882]">Infrastructure.</span>
+
+          <h1 className="text-balance text-3xl font-light leading-[1.12] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.25rem]">
+            One architecture. Many worlds.
+            <br />
+            <span className="mt-1 inline-block">
+              The infrastructure of the{' '}
+              <span className="font-normal text-[#C8A882]">future</span>
+            </span>
           </h1>
-          
-          <p className="text-lg md:text-xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed font-light">
-            Circular material systems for resilient industries and future habitats.
+
+          <p className="mx-auto mt-6 max-w-2xl text-base font-light leading-relaxed text-white/90 sm:text-lg md:max-w-3xl">
+            Transforming textiles into a resilient, closed-loop infrastructure for Earth and Space.
           </p>
-          
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Link 
-              href="/quote" 
-              className="bg-white/95 backdrop-blur-sm text-[#2c2c2c] px-8 py-3 rounded-full font-light tracking-wide hover:bg-[#C8A882] hover:text-white transition-all duration-300 shadow-lg"
+
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/60 sm:text-[15px]">
+            The first autonomous infrastructure platform for Earth and space — achieving technological
+            sovereignty through closed-loop systems.
+          </p>
+
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+            <Link
+              href="/system"
+              className="min-w-[220px] rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-[#1a1a1a] shadow-[0_8px_32px_rgba(0,0,0,0.35)] transition-all duration-300 hover:bg-[#C8A882] hover:text-white"
             >
-              Get a Quote
+              Explore the Infrastructure
+            </Link>
+            <Link
+              href="/contact"
+              className="min-w-[220px] rounded-full border border-white/50 bg-white/5 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-white hover:bg-white/15"
+            >
+              Book a Call with Our Team
             </Link>
           </div>
         </div>
-      </div>
 
-      {/* Subtle stars/particles effect placeholder - using theme colors */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-[#C8A882]/60 rounded-full animate-pulse"></div>
-        <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-white/60 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
-        <div className="absolute bottom-1/2 left-1/2 w-1 h-1 bg-[#d4c7b8]/70 rounded-full animate-pulse" style={{animationDelay: '2s'}}></div>
-        <div className="absolute top-2/3 left-1/5 w-1 h-1 bg-[#b8a491]/50 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
-        <div className="absolute top-1/2 right-1/5 w-1 h-1 bg-white/50 rounded-full animate-pulse" style={{animationDelay: '1.5s'}}></div>
-        <div className="absolute bottom-1/4 left-1/3 w-1 h-1 bg-[#C8A882]/40 rounded-full animate-pulse" style={{animationDelay: '2.5s'}}></div>
+        <div className="mx-auto mt-8 w-full max-w-5xl px-6 sm:px-8 lg:mt-6">
+          <div className="overflow-hidden rounded-xl border border-white/20 bg-black/55 shadow-[0_8px_24px_rgba(0,0,0,0.35)] backdrop-blur-md">
+            <div className="grid grid-cols-1 lg:grid-cols-3">
+              {heroFeatureBoxes.map((box, index) => (
+                <HeroFeatureBox
+                  key={box.title}
+                  title={box.title}
+                  description={box.description}
+                  icon={box.icon}
+                  iconRing={box.iconRing}
+                  showDivider={index > 0}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

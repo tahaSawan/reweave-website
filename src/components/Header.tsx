@@ -2,120 +2,141 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
+
+const navLinks = [
+  { href: '/', label: 'Home', exact: true },
+  { href: '/system', label: 'The System' },
+  { href: '/platform', label: 'The Platform' },
+  { href: '/applications', label: 'Applications' },
+  { href: '/model', label: 'The Model' },
+  { href: '/shift', label: 'The Shift' },
+  { href: '/partner', label: 'Partner' },
+] as const;
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [logoError, setLogoError] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
+
+  const isHome = pathname === '/';
+  const onHero = isHome && !isScrolled;
 
   return (
-    <header className="fixed top-6 left-1/2 transform -translate-x-1/2 w-[95%] max-w-6xl bg-black/20 backdrop-blur-xl rounded-full border border-white/10 text-white z-50">
-      <nav className="px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex items-center">
-            <Link href="/" className="flex items-center">
-              <div className="bg-white/95 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-lg hover:bg-white transition-all duration-200">
+    <header
+      className={`fixed left-1/2 top-4 z-50 w-[calc(100%-2rem)] max-w-6xl -translate-x-1/2 transition-all duration-300 sm:top-6 ${
+        onHero
+          ? 'border border-white/15 bg-black/40 shadow-[0_8px_32px_rgba(0,0,0,0.25)] backdrop-blur-xl'
+          : isScrolled
+            ? 'border border-white/10 bg-[#1a1a1a]/95 shadow-lg backdrop-blur-xl'
+            : 'border border-white/10 bg-black/30 backdrop-blur-xl'
+      } rounded-full text-white`}
+    >
+      <nav className="px-4 sm:px-6 lg:px-8">
+        <div className="flex h-14 items-center justify-between lg:h-16">
+          <Link href="/" className="flex shrink-0 items-center">
+            {logoError ? (
+              <span className="rounded-full bg-white/95 px-4 py-2 text-sm font-semibold tracking-wide text-[#1a1a1a]">
+                RE:WEAVE
+              </span>
+            ) : (
+              <div className="rounded-full bg-white/95 px-2.5 py-1 shadow-md transition-colors hover:bg-white">
                 <Image
                   src="/reweave-logo.jpg"
                   alt="RE:WEAVE"
                   width={160}
                   height={48}
-                  className="h-10 w-auto"
+                  className="h-9 w-auto lg:h-10"
                   priority
+                  onError={() => setLogoError(true)}
                 />
               </div>
-            </Link>
+            )}
+          </Link>
+
+          <div className="hidden items-center gap-1 lg:flex xl:gap-2">
+            {navLinks.map((link) => {
+              const isActive =
+                'exact' in link && link.exact ? pathname === link.href : pathname.startsWith(link.href);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`rounded-full px-3 py-2 text-[13px] tracking-wide transition-colors xl:px-3.5 ${
+                    isActive
+                      ? 'bg-white/10 text-[#C8A882]'
+                      : 'text-white/85 hover:bg-white/5 hover:text-white'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-6">
-            <Link href="/" className="text-[#C8A882] hover:text-white text-sm font-normal transition-colors">
-              Home
-            </Link>
-            
-            <Link href="/system" className="text-white hover:text-[#C8A882] text-sm font-normal transition-colors">
-              The System
-            </Link>
-            
-            <Link href="/platform" className="text-white hover:text-[#C8A882] text-sm font-normal transition-colors">
-              The Platform
-            </Link>
-            
-            <Link href="/applications" className="text-white hover:text-[#C8A882] text-sm font-normal transition-colors">
-              Applications
-            </Link>
-            
-            <Link href="/model" className="text-white hover:text-[#C8A882] text-sm font-normal transition-colors">
-              The Model
-            </Link>
-            
-            <Link href="/shift" className="text-white hover:text-[#C8A882] text-sm font-normal transition-colors">
-              The Shift
-            </Link>
-            
-            <Link href="/partner" className="text-white hover:text-[#C8A882] text-sm font-normal transition-colors">
-              Partner / Engage
-            </Link>
-          </div>
-
-          {/* CTA Button */}
-          <div className="hidden lg:flex items-center">
-            <Link 
-              href="/contact" 
-              className="bg-white/95 backdrop-blur-sm text-black px-5 py-2 rounded-full text-sm font-normal hover:bg-[#C8A882] hover:text-white transition-all duration-200 flex items-center space-x-2 shadow-lg"
+          <div className="hidden items-center lg:flex">
+            <Link
+              href="/contact"
+              className="flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-[13px] font-semibold text-[#1a1a1a] shadow-md transition-all hover:bg-[#C8A882] hover:text-white"
             >
               <span>Book a Call</span>
-              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="lg:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-white hover:text-[#C8A882] transition-colors"
-            >
-              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {isMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="rounded-full p-2 text-white transition-colors hover:bg-white/10 lg:hidden"
+            aria-expanded={isMenuOpen}
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          >
+            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {isMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
         </div>
 
-        {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden py-6 border-t border-white/10 bg-black/90 backdrop-blur-md">
-            <div className="flex flex-col space-y-4">
-              <Link href="/" className="text-[#C8A882] hover:text-white font-medium transition-colors">
-                Home
-              </Link>
-              <Link href="/system" className="text-white hover:text-[#C8A882] font-medium transition-colors">
-                The System
-              </Link>
-              <Link href="/platform" className="text-white hover:text-[#C8A882] font-medium transition-colors">
-                The Platform
-              </Link>
-              <Link href="/applications" className="text-white hover:text-[#C8A882] font-medium transition-colors">
-                Applications
-              </Link>
-              <Link href="/model" className="text-white hover:text-[#C8A882] font-medium transition-colors">
-                The Model
-              </Link>
-              <Link href="/shift" className="text-white hover:text-[#C8A882] font-medium transition-colors">
-                The Shift
-              </Link>
-              <Link href="/partner" className="text-white hover:text-[#C8A882] font-medium transition-colors">
-                Partner / Engage
-              </Link>
-              <Link 
-                href="/contact" 
-                className="bg-white text-black px-6 py-2 rounded-full font-medium hover:bg-[#C8A882] hover:text-white transition-colors text-center mt-4"
+          <div className="border-t border-white/10 py-5 lg:hidden">
+            <div className="flex flex-col gap-1">
+              {navLinks.map((link) => {
+                const isActive =
+                'exact' in link && link.exact ? pathname === link.href : pathname.startsWith(link.href);
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`rounded-lg px-4 py-3 text-sm font-medium transition-colors ${
+                      isActive ? 'bg-white/10 text-[#C8A882]' : 'text-white/90 hover:bg-white/5'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+              <Link
+                href="/contact"
+                className="mt-3 rounded-full bg-white px-6 py-3 text-center text-sm font-semibold text-[#1a1a1a] hover:bg-[#C8A882] hover:text-white"
               >
                 Book a Call
               </Link>
