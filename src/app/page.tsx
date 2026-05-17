@@ -8,6 +8,7 @@ import ProblemSection from '@/components/ProblemSection';
 import ImperativeSection from '@/components/ImperativeSection';
 import TheShiftSection from '@/components/TheShiftSection';
 import ValidationTrustSection from '@/components/ValidationTrustSection';
+import TheFutureRevenueBand from '@/components/TheFutureRevenueBand';
 import EcosystemSection from '@/components/EcosystemSection';
 import ReweaveIntroSection from '@/components/ReweaveIntroSection';
 import SovereignInfrastructureSection from '@/components/SovereignInfrastructureSection';
@@ -32,6 +33,8 @@ export default function Home() {
       <WhyItMattersResourceBand />
 
       <ValidationTrustSection />
+
+      <TheFutureRevenueBand />
 
       <section className={home.ctaBand}>
         <div className={`${home.containerNarrow} text-center`}>

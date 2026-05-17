@@ -2,7 +2,7 @@ import { home } from '@/lib/homePageStyle';
 
 export default function ValidationTrustSection() {
   return (
-    <section className={`bg-[#f5f2ed] ${home.section}`}>
+    <section className={`border-b border-[#ebe6dc] bg-[#f5f2ed] ${home.section}`}>
       <div className={`${home.container} max-w-[52rem]`}>
         <div className="mb-9 text-center">
           <h2 className={`${home.h2}`}>
