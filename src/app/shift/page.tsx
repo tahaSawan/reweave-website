@@ -1,23 +1,20 @@
 import Link from 'next/link';
+import PageHeroSection from '@/components/PageHeroSection';
+import { home } from '@/lib/homePageStyle';
 
 export default function ShiftPage() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="bg-[#f5f2ed] py-16 pt-24">
-        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-12">
-            <h1 className="text-xl md:text-3xl font-medium text-[#2c2c2c] mb-4 leading-tight">
-              The Shift — <span className="text-[#C8A882]">Market Context & Urgency</span>
-            </h1>
-            <div className="w-12 h-px bg-[#C8A882] mx-auto mb-6"></div>
-            <h2 className="text-lg md:text-xl font-medium text-[#2c2c2c] mb-4">From Linear Models to Strategic Sovereignty</h2>
-            <p className="text-sm md:text-base text-[#6b6b6b] max-w-4xl mx-auto leading-relaxed">
-              The world is transitioning from a system built for abundance to one defined by scarcity, accountability, and geopolitical volatility. The traditional linear textile model—optimized for low cost at the expense of control—is no longer viable under current regulatory and structural pressures.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHeroSection
+        eyebrow="The Shift"
+        title={
+          <>
+            Market Context & <span className={`font-semibold ${home.accentGold}`}>Urgency</span>
+          </>
+        }
+        subtitle="From Linear Models to Strategic Sovereignty"
+        lead="The world is transitioning from a system built for abundance to one defined by scarcity, accountability, and geopolitical volatility. The traditional linear textile model—optimized for low cost at the expense of control—is no longer viable under current regulatory and structural pressures."
+      />
 
       {/* Visual Separator */}
       <div className="h-px bg-gradient-to-r from-transparent via-[#C8A882]/20 to-transparent"></div>

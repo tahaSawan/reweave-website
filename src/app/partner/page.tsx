@@ -1,23 +1,20 @@
 import Link from 'next/link';
+import PageHeroSection from '@/components/PageHeroSection';
+import { home } from '@/lib/homePageStyle';
 
 export default function PartnerPage() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="bg-[#f5f2ed] py-16 pt-24">
-        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-12">
-            <h1 className="text-xl md:text-3xl font-medium text-[#2c2c2c] mb-4 leading-tight">
-              Partner / Engage — <span className="text-[#C8A882]">Build Sovereign Value Together</span>
-            </h1>
-            <div className="w-12 h-px bg-[#C8A882] mx-auto mb-6"></div>
-            <h2 className="text-lg md:text-xl font-medium text-[#2c2c2c] mb-4">The Infrastructure Advantage is Here</h2>
-            <p className="text-sm md:text-base text-[#6b6b6b] max-w-4xl mx-auto leading-relaxed">
-              RE:WEAVE™ offers a modular engagement framework designed to bridge the gap between today's textile challenges and tomorrow's sovereign infrastructure. We invite governments, industry leaders, and investors to choose a level of engagement that fits their mission and scales with confidence.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHeroSection
+        eyebrow="Partner / Engage"
+        title={
+          <>
+            Build Sovereign <span className={`font-semibold ${home.accentGold}`}>Value Together</span>
+          </>
+        }
+        subtitle="The Infrastructure Advantage is Here"
+        lead="RE:WEAVE™ offers a modular engagement framework designed to bridge the gap between today's textile challenges and tomorrow's sovereign infrastructure. We invite governments, industry leaders, and investors to choose a level of engagement that fits their mission and scales with confidence."
+      />
 
       {/* Visual Separator */}
       <div className="h-px bg-gradient-to-r from-transparent via-[#C8A882]/20 to-transparent"></div>

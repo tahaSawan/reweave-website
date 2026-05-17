@@ -147,12 +147,23 @@ function OverviewGrid() {
   );
 }
 
-export default function SystemOverviewSection() {
+type SystemOverviewSectionProps = {
+  showSectorsBar?: boolean;
+  /** Extra bottom padding when another section follows (e.g. Applications page). */
+  spaciousBottom?: boolean;
+};
+
+export default function SystemOverviewSection({
+  showSectorsBar = true,
+  spaciousBottom = false,
+}: SystemOverviewSectionProps) {
   return (
-    <section className={`bg-white ${home.section}`}>
+    <section
+      className={`bg-white ${home.section} ${spaciousBottom ? 'border-b border-[#ebe6dc] pb-14 sm:pb-16 lg:pb-20' : ''}`}
+    >
       <div className={home.container}>
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-14 xl:gap-16">
-          <LeftColumn />
+          <LeftColumn showSectorsBar={showSectorsBar} />
 
           <div className="flex w-full items-center justify-center lg:justify-end">
             <div className="mx-auto w-full max-w-[min(100%,400px)] lg:mx-0 lg:max-w-[460px]">
@@ -173,7 +184,7 @@ export default function SystemOverviewSection() {
   );
 }
 
-function LeftColumn() {
+function LeftColumn({ showSectorsBar }: { showSectorsBar: boolean }) {
   return (
     <div className="flex min-w-0 flex-col gap-6 sm:gap-7">
       <header className="text-left">
@@ -188,6 +199,7 @@ function LeftColumn() {
       <div className="flex w-full flex-col gap-5 sm:gap-6">
         <OverviewGrid />
 
+        {showSectorsBar && (
         <footer className="w-full overflow-hidden rounded-lg border border-[#e6dfd4]">
           <p className="bg-[#c9b89a] px-4 py-3 text-left text-sm italic leading-relaxed text-[#2c2c2c] sm:px-5 sm:py-3.5 sm:text-[0.9375rem]">
             Built for critical infrastructure across sectors for generations.
@@ -208,6 +220,7 @@ function LeftColumn() {
             ))}
           </div>
         </footer>
+        )}
       </div>
     </div>
   );

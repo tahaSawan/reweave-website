@@ -1,23 +1,20 @@
 import Link from 'next/link';
+import PageHeroSection from '@/components/PageHeroSection';
+import { home } from '@/lib/homePageStyle';
 
 export default function ModelPage() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="bg-[#f5f2ed] py-16 pt-24">
-        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-12">
-            <h1 className="text-xl md:text-3xl font-medium text-[#2c2c2c] mb-4 leading-tight">
-              The Model — <span className="text-[#C8A882]">Value Creation & ROI</span>
-            </h1>
-            <div className="w-12 h-px bg-[#C8A882] mx-auto mb-6"></div>
-            <h2 className="text-lg md:text-xl font-medium text-[#2c2c2c] mb-4">Transforming Textiles into Sovereign Value</h2>
-            <p className="text-sm md:text-base text-[#6b6b6b] max-w-4xl mx-auto leading-relaxed">
-              The RE:WEAVE™ business model moves beyond traditional transactional sales to a recurring value framework. By monetizing the entire material lifecycle—from initial engineering to digital compliance and autonomous recovery—the system generates compounding, long-term value for partners.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHeroSection
+        eyebrow="The Model"
+        title={
+          <>
+            Value Creation & <span className={`font-semibold ${home.accentGold}`}>ROI</span>
+          </>
+        }
+        subtitle="Transforming Textiles into Sovereign Value"
+        lead="The RE:WEAVE™ business model moves beyond traditional transactional sales to a recurring value framework. By monetizing the entire material lifecycle—from initial engineering to digital compliance and autonomous recovery—the system generates compounding, long-term value for partners."
+      />
 
       {/* Visual Separator */}
       <div className="h-px bg-gradient-to-r from-transparent via-[#C8A882]/20 to-transparent"></div>

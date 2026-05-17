@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react';
 const navLinks = [
   { href: '/', label: 'Home', exact: true },
   { href: '/system', label: 'System' },
-  { href: '/platform', label: 'Platform' },
   { href: '/applications', label: 'Applications' },
   { href: '/model', label: 'Model' },
   { href: '/shift', label: 'Shift' },
