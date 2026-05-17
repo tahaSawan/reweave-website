@@ -1,20 +1,39 @@
 import Link from 'next/link';
+import { home } from '@/lib/homePageStyle';
 
 export default function SystemPage() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="bg-[#f5f2ed] py-16 pt-24">
-        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-12">
-            <h1 className="text-xl md:text-3xl font-medium text-[#2c2c2c] mb-4 leading-tight">
-              The System: Infrastructure for <span className="text-[#C8A882]">Strategic Sovereignty</span>
-            </h1>
-            <div className="w-12 h-px bg-[#C8A882] mx-auto mb-6"></div>
-            <p className="text-sm md:text-base text-[#6b6b6b] max-w-4xl mx-auto leading-relaxed">
-              RE:WEAVE™ is not merely a collection of products; it is a sovereign material infrastructure. It operates as a closed-loop system that integrates advanced materials, biological regeneration, energy systems, and autonomous AI control to create long-term value and industrial resilience. By moving away from fragmented, dependent supply chains, we build a self-sufficient physical infrastructure designed for the most demanding environments on Earth and in space.
-            </p>
-          </div>
+      {/* Hero — full-width art from The systems / System-Hero (served as /system-hero.png) */}
+      <section className="relative isolate min-h-[min(68vh,640px)] overflow-hidden pt-24">
+        <div
+          className="absolute inset-0 bg-cover bg-[position:center_35%]"
+          style={{ backgroundImage: 'url(/system-hero.png)' }}
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/40 to-black/75"
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_35%,transparent_20%,rgba(0,0,0,0.5)_85%)]"
+          aria-hidden
+        />
+
+        <div className="relative z-10 mx-auto flex min-h-[min(68vh,640px)] max-w-5xl flex-col justify-center px-6 py-14 text-center sm:px-8 lg:px-12">
+          <p className={`mx-auto mb-3 max-w-2xl ${home.heroEyebrow}`}>The System</p>
+          <h1 className={`mx-auto max-w-3xl ${home.heroTitle}`}>
+            Infrastructure for{' '}
+            <span className={`font-semibold ${home.accentGold}`}>Strategic Sovereignty</span>
+          </h1>
+          <div className={`mx-auto mt-5 h-px w-14 ${home.ruleBar}`} />
+          <p className={`mx-auto mt-6 max-w-3xl text-pretty ${home.heroLead}`}>
+            RE:WEAVE™ is not merely a collection of products; it is a sovereign material infrastructure.
+            It operates as a closed-loop system that integrates advanced materials, biological regeneration,
+            energy systems, and autonomous AI control to create long-term value and industrial resilience.
+            By moving away from fragmented, dependent supply chains, we build a self-sufficient physical
+            infrastructure designed for the most demanding environments on Earth and in space.
+          </p>
         </div>
       </section>
 

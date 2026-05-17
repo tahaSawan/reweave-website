@@ -7,11 +7,11 @@ import { useEffect, useState } from 'react';
 
 const navLinks = [
   { href: '/', label: 'Home', exact: true },
-  { href: '/system', label: 'The System' },
-  { href: '/platform', label: 'The Platform' },
+  { href: '/system', label: 'System' },
+  { href: '/platform', label: 'Platform' },
   { href: '/applications', label: 'Applications' },
-  { href: '/model', label: 'The Model' },
-  { href: '/shift', label: 'The Shift' },
+  { href: '/model', label: 'Model' },
+  { href: '/shift', label: 'Shift' },
   { href: '/partner', label: 'Partner' },
 ] as const;
 
@@ -37,7 +37,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed left-1/2 top-4 z-50 w-[calc(100%-2rem)] max-w-6xl -translate-x-1/2 transition-all duration-300 sm:top-6 ${
+      className={`fixed left-1/2 top-4 z-50 w-[calc(100%-1.5rem)] max-w-[90rem] -translate-x-1/2 transition-all duration-300 sm:top-6 ${
         onHero
           ? 'border border-white/15 bg-black/40 shadow-[0_8px_32px_rgba(0,0,0,0.25)] backdrop-blur-xl'
           : isScrolled
@@ -67,7 +67,7 @@ export default function Header() {
             )}
           </Link>
 
-          <div className="hidden items-center gap-1 lg:flex xl:gap-2">
+          <div className="hidden items-center gap-1 lg:flex xl:gap-3">
             {navLinks.map((link) => {
               const isActive =
                 'exact' in link && link.exact ? pathname === link.href : pathname.startsWith(link.href);
@@ -75,7 +75,7 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`rounded-full px-3 py-2 text-[13px] tracking-wide transition-colors xl:px-3.5 ${
+                  className={`rounded-full px-3.5 py-2 text-[13px] tracking-wide transition-colors xl:px-4 ${
                     isActive
                       ? 'bg-white/10 text-[#C8A882]'
                       : 'text-white/85 hover:bg-white/5 hover:text-white'

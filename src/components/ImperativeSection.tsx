@@ -1,4 +1,24 @@
+import Image from 'next/image';
 import { home } from '@/lib/homePageStyle';
+
+const imperativeImages = [
+  {
+    src: '/thread-s.png',
+    alt: 'Bundle of natural textile fibers',
+  },
+  {
+    src: '/garbage.png',
+    alt: 'Landfill with waste and machinery',
+  },
+  {
+    src: '/chimney.png',
+    alt: 'Industrial chimneys emitting smoke',
+  },
+  {
+    src: '/dry-land.png',
+    alt: 'Cracked dry earth with a lone tree',
+  },
+] as const;
 
 const facts = [
   {
@@ -34,7 +54,7 @@ const facts = [
 
 export default function ImperativeSection() {
   return (
-    <section className={`bg-white ${home.section}`}>
+    <section className={`bg-[#ebe6dc] ${home.section}`}>
       <div className={`relative z-10 ${home.container}`}>
         <div className="mx-auto max-w-4xl text-center">
           <p className={home.eyebrow}>The Imperative</p>
@@ -48,7 +68,26 @@ export default function ImperativeSection() {
           <div className="mx-auto mt-6 h-px w-14 bg-[#b5a48a]/55" aria-hidden />
         </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-4 md:mt-10 md:grid-cols-3 md:gap-5">
+        <div className="mx-auto mt-8 max-w-3xl md:mt-10 lg:max-w-4xl">
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-2.5 md:gap-3">
+            {imperativeImages.map((image) => (
+              <div
+                key={image.src}
+                className="relative h-24 overflow-hidden rounded-lg bg-[#ebe6dc] sm:h-28 sm:rounded-xl md:h-32"
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 640px) 45vw, 220px"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-4 grid grid-cols-1 gap-4 sm:mt-5 md:grid-cols-3 md:gap-5">
           {facts.map((fact) => (
             <article
               key={fact.label}
