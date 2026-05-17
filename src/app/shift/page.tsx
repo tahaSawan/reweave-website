@@ -1,6 +1,17 @@
 import Link from 'next/link';
 import PageHeroSection from '@/components/PageHeroSection';
+import ShiftMarketContextSection from '@/components/shift/ShiftMarketContextSection';
+import ModelServiceTiersSection from '@/components/model/ModelServiceTiersSection';
+import ShiftSolutionSection from '@/components/shift/ShiftSolutionSection';
+import ShiftUrgencySection from '@/components/shift/ShiftUrgencySection';
 import { home } from '@/lib/homePageStyle';
+
+const sectionDivider = (
+  <div
+    className="h-px bg-gradient-to-r from-transparent via-[#C8A882]/20 to-transparent"
+    aria-hidden
+  />
+);
 
 export default function ShiftPage() {
   return (
@@ -12,253 +23,43 @@ export default function ShiftPage() {
             Market Context & <span className={`font-semibold ${home.accentGold}`}>Urgency</span>
           </>
         }
-        subtitle="From Linear Models to Strategic Sovereignty"
+        subtitle="The Shift: From Linear Models to Strategic Sovereignty"
         lead="The world is transitioning from a system built for abundance to one defined by scarcity, accountability, and geopolitical volatility. The traditional linear textile model—optimized for low cost at the expense of control—is no longer viable under current regulatory and structural pressures."
       />
 
-      {/* Visual Separator */}
-      <div className="h-px bg-gradient-to-r from-transparent via-[#C8A882]/20 to-transparent"></div>
+      {sectionDivider}
 
-      {/* Market Context Section */}
-      <section className="bg-white py-16">
-        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-12">
-            <h2 className="text-lg md:text-2xl font-medium text-[#2c2c2c] mb-4">
-              1. The Market Context: <span className="text-[#C8A882]">A System in Crisis</span>
-            </h2>
-            <div className="w-12 h-px bg-[#C8A882] mx-auto mb-6"></div>
-            <p className="text-sm md:text-base text-[#6b6b6b] max-w-3xl mx-auto leading-relaxed mb-8">
-              The legacy textile industry operates on a "take-make-waste" trajectory that is failing both economically and strategically:
-            </p>
-          </div>
+      <ShiftMarketContextSection />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {/* Value Leakage */}
-            <div className="bg-[#faf9f7] rounded-xl p-6 border border-[#e8dcc6] shadow-sm text-center">
-              <div className="w-12 h-12 bg-[#C8A882]/10 rounded-md flex items-center justify-center mx-auto mb-4">
-                <span className="text-lg font-semibold text-[#C8A882]">85%</span>
-              </div>
-              <h3 className="text-sm font-semibold text-[#2c2c2c] mb-2">Value Leakage</h3>
-              <p className="text-xs text-[#6b6b6b] leading-relaxed">
-                Over 85% of textiles end up in landfills or incineration annually.
-              </p>
-            </div>
+      {sectionDivider}
 
-            {/* Material Inefficiency */}
-            <div className="bg-[#faf9f7] rounded-xl p-6 border border-[#e8dcc6] shadow-sm text-center">
-              <div className="w-12 h-12 bg-[#C8A882]/10 rounded-md flex items-center justify-center mx-auto mb-4">
-                <span className="text-lg font-semibold text-[#C8A882]">{'<'}1%</span>
-              </div>
-              <h3 className="text-sm font-semibold text-[#2c2c2c] mb-2">Material Inefficiency</h3>
-              <p className="text-xs text-[#6b6b6b] leading-relaxed">
-                Less than 1% of textiles are recycled back into new textiles.
-              </p>
-            </div>
+      <ShiftUrgencySection />
 
-            {/* Environmental Impact */}
-            <div className="bg-[#faf9f7] rounded-xl p-6 border border-[#e8dcc6] shadow-sm text-center">
-              <div className="w-12 h-12 bg-[#C8A882]/10 rounded-md flex items-center justify-center mx-auto mb-4">
-                <span className="text-lg font-semibold text-[#C8A882]">10%</span>
-              </div>
-              <h3 className="text-sm font-semibold text-[#2c2c2c] mb-2">Environmental Impact</h3>
-              <p className="text-xs text-[#6b6b6b] leading-relaxed">
-                The sector is responsible for 10% of global CO<sub>2</sub> emissions.
-              </p>
-            </div>
+      {sectionDivider}
 
-            {/* Strategic Vulnerability */}
-            <div className="bg-[#faf9f7] rounded-xl p-6 border border-[#e8dcc6] shadow-sm text-center">
-              <div className="w-12 h-12 bg-[#C8A882]/10 rounded-md flex items-center justify-center mx-auto mb-4">
-                <span className="text-lg font-semibold text-[#C8A882]">⚠️</span>
-              </div>
-              <h3 className="text-sm font-semibold text-[#2c2c2c] mb-2">Strategic Vulnerability</h3>
-              <p className="text-xs text-[#6b6b6b] leading-relaxed">
-                Global dependencies create high volatility and a total lack of control over critical material access.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ModelServiceTiersSection sectionLabel={null} />
 
-      {/* Visual Separator */}
-      <div className="h-px bg-gradient-to-r from-transparent via-[#C8A882]/20 to-transparent"></div>
+      {sectionDivider}
 
-      {/* The Urgency Section */}
-      <section className="bg-[#f5f2ed] py-16">
-        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-12">
-            <h2 className="text-lg md:text-2xl font-medium text-[#2c2c2c] mb-4">
-              2. The Urgency: <span className="text-[#C8A882]">Why Now?</span>
-            </h2>
-            <div className="w-12 h-px bg-[#C8A882] mx-auto mb-6"></div>
-            <p className="text-sm md:text-base text-[#6b6b6b] max-w-3xl mx-auto leading-relaxed mb-8">
-              We have reached a tipping point where circularity is moving from a voluntary goal to a mandatory operational requirement.
-            </p>
-          </div>
+      <ShiftSolutionSection />
 
-          <div className="space-y-8">
-            {/* Accelerating Regulatory Pressure */}
-            <div className="bg-white rounded-xl p-8 border border-[#e8dcc6] shadow-sm">
-              <h3 className="text-lg font-semibold text-[#2c2c2c] mb-6">Accelerating Regulatory Pressure</h3>
-              <p className="text-sm text-[#6b6b6b] leading-relaxed mb-6">
-                New EU frameworks are redefining the cost of doing business:
-              </p>
-              
-              <div className="space-y-4 mb-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-2 h-2 bg-[#C8A882] rounded-full mt-2 flex-shrink-0"></div>
-                  <div>
-                    <h4 className="text-sm font-semibold text-[#2c2c2c] mb-1">ESPR (Ecodesign for Sustainable Products Regulation):</h4>
-                    <p className="text-xs text-[#6b6b6b] leading-relaxed">Products must now be designed for durability, repairability, and resource efficiency.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="w-2 h-2 bg-[#C8A882] rounded-full mt-2 flex-shrink-0"></div>
-                  <div>
-                    <h4 className="text-sm font-semibold text-[#2c2c2c] mb-1">DPP (Digital Product Passport):</h4>
-                    <p className="text-xs text-[#6b6b6b] leading-relaxed">Mandatory digital traceability and lifecycle transparency will be enforced starting in 2027.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="w-2 h-2 bg-[#C8A882] rounded-full mt-2 flex-shrink-0"></div>
-                  <div>
-                    <h4 className="text-sm font-semibold text-[#2c2c2c] mb-1">EPR (Extended Producer Responsibility):</h4>
-                    <p className="text-xs text-[#6b6b6b] leading-relaxed">Producers are now financially and operationally accountable for the entire lifecycle of their products.</p>
-                  </div>
-                </div>
-              </div>
+      {sectionDivider}
 
-              <div className="bg-[#faf9f7] rounded-lg p-4 border-l-4 border-[#C8A882]">
-                <p className="text-sm font-semibold text-[#2c2c2c]">The Cost of Inaction:</p>
-                <p className="text-xs text-[#6b6b6b] leading-relaxed">Non-compliance in the EU can lead to fines reaching up to <strong className="text-[#2c2c2c]">10% of annual turnover</strong>.</p>
-              </div>
-            </div>
-
-            {/* Geopolitical & Economic Imperatives */}
-            <div className="bg-white rounded-xl p-8 border border-[#e8dcc6] shadow-sm">
-              <h3 className="text-lg font-semibold text-[#2c2c2c] mb-6">Geopolitical & Economic Imperatives</h3>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-[#C8A882]/10 rounded-md flex items-center justify-center mx-auto mb-4">
-                    <span className="text-lg">🏛️</span>
-                  </div>
-                  <h4 className="text-sm font-semibold text-[#2c2c2c] mb-2">Strategic Sovereignty</h4>
-                  <p className="text-xs text-[#6b6b6b] leading-relaxed">
-                    In a world of constrained resources, securing independent access to materials is a strategic imperative for nations and industries.
-                  </p>
-                </div>
-                
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-[#C8A882]/10 rounded-md flex items-center justify-center mx-auto mb-4">
-                    <span className="text-lg">📈</span>
-                  </div>
-                  <h4 className="text-sm font-semibold text-[#2c2c2c] mb-2">Rising Costs</h4>
-                  <p className="text-xs text-[#6b6b6b] leading-relaxed">
-                    Compliance and reporting costs are projected to increase by <strong className="text-[#2c2c2c]">30–70%</strong> by 2030.
-                  </p>
-                </div>
-                
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-[#C8A882]/10 rounded-md flex items-center justify-center mx-auto mb-4">
-                    <span className="text-lg">📊</span>
-                  </div>
-                  <h4 className="text-sm font-semibold text-[#2c2c2c] mb-2">Market Expectations</h4>
-                  <p className="text-xs text-[#6b6b6b] leading-relaxed">
-                    <strong className="text-[#2c2c2c]">76%</strong> of brands cite sustainability as a key driver for future growth and market access.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Visual Separator */}
-      <div className="h-px bg-gradient-to-r from-transparent via-[#C8A882]/20 to-transparent"></div>
-
-      {/* The Solution Section */}
-      <section className="bg-white py-16">
-        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-12">
-            <h2 className="text-lg md:text-2xl font-medium text-[#2c2c2c] mb-4">
-              3. The Solution: <span className="text-[#C8A882]">Infrastructure as Direction</span>
-            </h2>
-            <div className="w-12 h-px bg-[#C8A882] mx-auto mb-6"></div>
-            <p className="text-sm md:text-base text-[#6b6b6b] max-w-3xl mx-auto leading-relaxed mb-8">
-              RE:WEAVE™ transforms these challenges into a competitive advantage by replacing fragmented supply chains with sovereign material infrastructure.
-            </p>
-          </div>
-
-          <div className="bg-[#2c2c2c] rounded-xl p-8 text-white mb-8">
-            <h3 className="text-lg font-semibold text-[#C8A882] mb-6 text-center">Explore</h3>
-            
-            <div className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 bg-[#C8A882]/10 rounded-md flex items-center justify-center flex-shrink-0">
-                  <span className="text-[#C8A882] text-lg">→</span>
-                </div>
-                <div>
-                  <h4 className="text-sm font-semibold text-white mb-1">From Disruption to Direction:</h4>
-                  <p className="text-xs text-white/90 leading-relaxed">Moving from reacting to risk to building inherent resilience.</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 bg-[#C8A882]/10 rounded-md flex items-center justify-center flex-shrink-0">
-                  <span className="text-[#C8A882] text-lg">→</span>
-                </div>
-                <div>
-                  <h4 className="text-sm font-semibold text-white mb-1">From Linear to Sovereign:</h4>
-                  <p className="text-xs text-white/90 leading-relaxed">Transitioning from dependent supply chains to autonomous, closed-loop systems.</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 bg-[#C8A882]/10 rounded-md flex items-center justify-center flex-shrink-0">
-                  <span className="text-[#C8A882] text-lg">→</span>
-                </div>
-                <div>
-                  <h4 className="text-sm font-semibold text-white mb-1">From Waste to Value:</h4>
-                  <p className="text-xs text-white/90 leading-relaxed">Turning waste streams into high-performance resources through biological and mechanical intelligence.</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="text-center mt-8 pt-6 border-t border-white/10">
-              <p className="text-sm font-medium text-[#C8A882]">
-                The future belongs to systems that are resilient, regenerative, and sovereign by design.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Visual Separator */}
-      <div className="h-px bg-gradient-to-r from-transparent via-[#C8A882]/20 to-transparent"></div>
-
-      {/* CTA Section */}
-      <section className="bg-[#1a1a1a] text-white py-16">
-        <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
-          <h2 className="text-lg md:text-2xl font-medium mb-6 leading-tight">
+      <section className={home.ctaBand}>
+        <div className={`${home.containerNarrow} text-center`}>
+          <h2 className={home.ctaTitle}>
             Is your supply chain ready for <span className="text-[#C8A882]">2027?</span>
           </h2>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link 
-              href="/contact" 
-              className="bg-white text-[#1a1a1a] px-6 py-2.5 rounded-full font-medium text-sm hover:bg-[#C8A882] hover:text-white transition-all duration-300 inline-flex items-center space-x-2 shadow-lg"
-            >
-              <span>Book a Call with Our Team</span>
-              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+            <Link href="/contact" className={`inline-flex items-center gap-2 ${home.ctaButton}`}>
+              Book a Call with Our Team
+              <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </Link>
-            <Link 
-              href="/partner" 
-              className="border border-white/40 text-white px-6 py-2.5 rounded-full font-medium text-sm hover:bg-white/10 transition-all duration-300"
+            <Link
+              href="/partner"
+              className="rounded-full border border-white/40 px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:border-white/60 hover:bg-white/10"
             >
               See How to Partner & Engage
             </Link>

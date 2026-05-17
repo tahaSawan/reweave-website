@@ -229,7 +229,13 @@ function InvestmentSidebar() {
   );
 }
 
-export default function ModelServiceTiersSection() {
+type ModelServiceTiersSectionProps = {
+  sectionLabel?: string | null;
+};
+
+export default function ModelServiceTiersSection({
+  sectionLabel = '04 — Engagement framework',
+}: ModelServiceTiersSectionProps) {
   return (
     <section className={`relative overflow-hidden border-t border-[#ebe6dc] ${home.section}`}>
       {/* Section backdrop — cityscape */}
@@ -247,9 +253,11 @@ export default function ModelServiceTiersSection() {
       </div>
 
       <div className={`relative ${home.container} max-w-[88rem]`}>
-        <p className="mb-8 text-center text-[11px] font-bold uppercase tracking-[0.22em] text-[#b5a48a]">
-          04 — Engagement framework
-        </p>
+        {sectionLabel ? (
+          <p className="mb-8 text-center text-[11px] font-bold uppercase tracking-[0.22em] text-[#b5a48a]">
+            {sectionLabel}
+          </p>
+        ) : null}
 
         <div className="lg:grid lg:grid-cols-[minmax(0,22rem)_1fr] lg:items-stretch lg:gap-9 xl:grid-cols-[minmax(0,25rem)_1fr] xl:gap-11">
           <InvestmentSidebar />
