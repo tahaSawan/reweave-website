@@ -231,13 +231,17 @@ function InvestmentSidebar() {
 
 type ModelServiceTiersSectionProps = {
   sectionLabel?: string | null;
+  compactTop?: boolean;
 };
 
 export default function ModelServiceTiersSection({
   sectionLabel = '04 — Engagement framework',
+  compactTop = false,
 }: ModelServiceTiersSectionProps) {
   return (
-    <section className={`relative overflow-hidden border-t border-[#ebe6dc] ${home.section}`}>
+    <section
+      className={`relative overflow-hidden ${compactTop ? 'pb-10 sm:pb-12 lg:pb-14' : `border-t border-[#ebe6dc] ${home.section}`}`}
+    >
       {/* Section backdrop — cityscape */}
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <Image
