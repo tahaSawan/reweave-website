@@ -29,10 +29,6 @@ yarn-error.log*
 .env*.local
 .env
 
-# IP vault — slide files stay local; README is tracked
-/private/ip-vault/*
-!/private/ip-vault/README.md
-
 # vercel
 .vercel
 
