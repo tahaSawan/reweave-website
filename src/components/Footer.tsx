@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { SITE_INFO_EMAIL } from '@/lib/siteContact';
 
 export default function Footer() {
   return (
@@ -56,8 +57,8 @@ export default function Footer() {
             <h3 className="text-white font-light mb-6 text-lg tracking-wide">Get in Touch</h3>
             <ul className="space-y-4">
               <li>
-                <a href="mailto:info@reweave.com" className="text-white/70 hover:text-[#C8A882] font-light transition-colors">
-                  info@reweave.com
+                <a href={`mailto:${SITE_INFO_EMAIL}`} className="text-white/70 hover:text-[#C8A882] font-light transition-colors">
+                  {SITE_INFO_EMAIL}
                 </a>
               </li>
               <li><Link href="/contact" className="text-white/70 hover:text-[#C8A882] font-light transition-colors">Contact Us</Link></li>

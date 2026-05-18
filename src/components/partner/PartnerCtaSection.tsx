@@ -1,6 +1,7 @@
 ﻿import Link from 'next/link';
 import ModelSectionIntro from '@/components/model/ModelSectionIntro';
 import { home } from '@/lib/homePageStyle';
+import { SITE_INFO_EMAIL } from '@/lib/siteContact';
 import { LeafIcon, LockIcon, ScaleIcon } from '@/components/partner/partnerIcons';
 
 const commitments = [
@@ -53,10 +54,10 @@ export default function PartnerCtaSection() {
             <p className={`mt-6 ${home.body}`}>
               Contact:{' '}
               <a
-                href="mailto:info@transformingtextiles.com"
+                href={`mailto:${SITE_INFO_EMAIL}`}
                 className={`font-semibold ${home.accentGold} transition-colors hover:text-[#8f7350]`}
               >
-                info@transformingtextiles.com
+                {SITE_INFO_EMAIL}
               </a>
             </p>
           </div>

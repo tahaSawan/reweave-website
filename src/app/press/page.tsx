@@ -1,3 +1,5 @@
+import { SITE_PRESS_EMAIL } from '@/lib/siteContact';
+
 export default function PressPage() {
   return (
     <div className="bg-[#f8f6f3] min-h-screen pt-24">
@@ -54,7 +56,7 @@ export default function PressPage() {
                 <div>
                   <h4 className="font-medium mb-2">Media Contact</h4>
                   <p className="text-sm text-white/80 mb-2">For media inquiries and interview requests</p>
-                  <a href="mailto:press@transformingtextiles.com" className="text-[#C8A882] hover:text-white text-sm">press@transformingtextiles.com</a>
+                  <a href={`mailto:${SITE_PRESS_EMAIL}`} className="text-[#C8A882] hover:text-white text-sm">{SITE_PRESS_EMAIL}</a>
                 </div>
               </div>
             </div>
