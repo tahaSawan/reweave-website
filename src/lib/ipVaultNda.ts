@@ -1,0 +1,1 @@
+export const NDA_TEXT = `By entering this platform you confirm that you have been given an access code by RE:WEAVE™ / Transforming Textiles and that all materials are confidential. You agree not to copy, distribute, or share any content without written permission.`;

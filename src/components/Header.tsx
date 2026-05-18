@@ -12,6 +12,7 @@ const navLinks = [
   { href: '/model', label: 'Model' },
   { href: '/shift', label: 'Shift' },
   { href: '/partner', label: 'Partner' },
+  { href: '/ip-platform', label: 'IP Platform' },
 ] as const;
 
 export default function Header() {
